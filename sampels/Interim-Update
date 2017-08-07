@@ -1,0 +1,25 @@
+ Acct-Status-Type = Interim-Update
+        NAS-Port-Type = Ethernet
+        Calling-Station-Id = "00:22:55:D0:AF:C9"
+        Called-Station-Id = "hotspot1"
+        NAS-Port-Id = "sfp1-Local 192"
+        User-Name = "mobarakeh.m"
+        NAS-Port = 2153989445
+        Acct-Session-Id = "80634545"
+        Framed-IP-Address = 192.168.236.97
+        Mikrotik-Host-IP = 192.168.236.97
+        Event-Timestamp = "Apr 17 2017 00:00:10 IRDT"
+        Acct-Input-Octets = 3275444
+        Acct-Output-Octets = 31502023
+        Acct-Input-Gigawords = 0
+        Acct-Output-Gigawords = 0
+        Acct-Input-Packets = 28495
+        Acct-Output-Packets = 35342
+        Acct-Session-Time = 17097
+        NAS-Identifier = "Core1"
+        Acct-Delay-Time = 0
+        NAS-IP-Address = 172.16.0.5
+        Tmp-String-9 = "ai:"
+        Acct-Unique-Session-Id = "9c9b9296cf6f7a518fc7a5ded2917464"
+        Timestamp = 1492371010
+

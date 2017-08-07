@@ -1,0 +1,27 @@
+Mon Apr 17 00:00:11 2017
+        Acct-Status-Type = Stop
+        Acct-Terminate-Cause = Idle-Timeout
+        NAS-Port-Type = Ethernet
+        Calling-Station-Id = "00:27:0C:0C:7B:44"
+        Called-Station-Id = "hotspot1"
+        NAS-Port-Id = "sfp1-Local 192"
+        User-Name = "a.alizadeh"
+        NAS-Port = 2153973100
+        Acct-Session-Id = "8063056c"
+        Framed-IP-Address = 192.168.42.83
+        Mikrotik-Host-IP = 192.168.42.83
+        Event-Timestamp = "Apr 17 2017 00:00:11 IRDT"
+        Acct-Input-Octets = 16208422
+        Acct-Output-Octets = 346942704
+        Acct-Input-Gigawords = 0
+        Acct-Output-Gigawords = 0
+        Acct-Input-Packets = 206471
+        Acct-Output-Packets = 276258
+        Acct-Session-Time = 53199
+        NAS-Identifier = "Core1"
+        Acct-Delay-Time = 0
+        NAS-IP-Address = 172.16.0.5
+        Tmp-String-9 = "ai:"
+        Acct-Unique-Session-Id = "0f6fa50fd3ccedeb30f1d249082d96e0"
+        Timestamp = 1492371011
+

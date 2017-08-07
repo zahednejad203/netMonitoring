@@ -1,0 +1,18 @@
+Acct-Status-Type = Start
+        NAS-Port-Type = Ethernet
+        Calling-Station-Id = "00:22:55:D0:AF:C9"
+        Called-Station-Id = "hotspot1"
+        NAS-Port-Id = "sfp1-Local 192"
+        User-Name = "mabrook"
+        NAS-Port = 2153994598
+        Acct-Session-Id = "80635966"
+        Framed-IP-Address = 192.168.56.127
+        Mikrotik-Host-IP = 192.168.56.127
+        Event-Timestamp = "Apr 17 2017 00:00:10 IRDT"
+        NAS-Identifier = "Core1"
+        Acct-Delay-Time = 0
+        NAS-IP-Address = 172.16.0.5
+        Tmp-String-9 = "ai:"
+        Acct-Unique-Session-Id = "cb966f2dc8f9f1873b5f97ca131307f4"
+        Timestamp = 1492371010
+

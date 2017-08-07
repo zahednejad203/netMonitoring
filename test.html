@@ -1,0 +1,125 @@
+<html>
+<head>
+    <title>Test charts</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="http://d3js.org/d3.v3.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rickshaw/1.5.1/rickshaw.min.js" type="text/javascript"></script>
+    <!-- <script src="index.js" type="text/javascript"></script> -->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/rickshaw/1.5.1/rickshaw.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- <link href="index.css" media="screen" rel="stylesheet" type="text/css"> -->
+
+    <style>
+        .chart_container {
+            position: relative;
+            display: inline-block;
+            /*font-family: Arial, Helvetica, sans-serif;*/
+            /*margin-top: 20px;*/
+        }
+        .chart {
+            /*position: absolute;*/
+            display: inline-block;
+            left: 50px;
+        }
+        .y_axis {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+        }
+        .y_axis > svg {
+            padding-bottom: 20px;
+        }
+        .x_tick {
+            bottom: -20px !important;
+        }
+        .legend {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 0 0 10px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function() {
+
+            var influxdb = 'http://192.168.143.131:8086/query';
+            var testQuery = ' SELECT mean("usage") FROM "user" WHERE "username" = '+"'niloo'"+" AND time > '2017-07-27T07:00:00Z' AND time < '2017-07-27T07:03:40Z' GROUP BY time(10s) fill(0)";
+
+            $.getJSON( influxdb, {
+                        db: 'NetUsage',
+                        q: testQuery
+                    },
+                    function( influxData ) {
+                        console.log(influxData)
+                        drawGraph(
+                                $('#test_chart'),
+                                transformData(influxData),
+                                'stack'
+                        );
+                    }
+            );
+
+            function transformData(influxData) {
+                var palette = new Rickshaw.Color.Palette();
+                return influxData.results[0].series.map(function(s) {
+                    return {
+                        name: JSON.stringify(s.tags),
+                        data: s.values.map(function(v) {
+                            return { x: new Date(v[0]).getTime() / 1000, y: v[1] };
+                        }),
+                        color: palette.color()
+                    };
+                });
+            }
+
+            function drawGraph($element, series, renderer) {
+                //$element.find('.y_axis').css('background-color: red;')
+
+                var graph = new Rickshaw.Graph({
+                    element: $element.find('.chart').get(0),
+                    width: 800,
+                    height: 200,
+                    renderer: renderer,
+                    series: series
+                });
+
+                var xAxis = new Rickshaw.Graph.Axis.Time({
+                    graph: graph
+                });
+                var yAxis = new Rickshaw.Graph.Axis.Y({
+                    graph: graph,
+                    orientation: 'left',
+                    element: $element.find('.y_axis').get(0)
+                });
+
+                var legend = new Rickshaw.Graph.Legend({
+                    element: $element.find('.legend').get(0),
+                    graph: graph
+                });
+
+                //xAxis.render();
+                //yAxis.render();
+                graph.render();
+            }
+
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="test_chart" style="white-space: nowrap;">
+                <div class="chart_container">
+                    <div class="y_axis"></div>
+                    <div class="chart"></div>
+                </div>
+                <div class="legend"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

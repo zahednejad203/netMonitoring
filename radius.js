@@ -14,28 +14,28 @@ server.on("message", function (msg, rinfo) {
   // }
 
   username = packet.attributes['User-Name'];
-  // password = packet.attributes['User-Password'];
+  password = packet.attributes['User-Password'];
 
   console.log('Access-Request for ' + username);
 
   // if (username == 'jlpicard' && password == 'beverly123') {
-  //   code = 'Access-Accept';
+    code = 'Access-Accept';
   // } else {
   //   code = 'Access-Reject';
   // }
 
-  // var response = radius.encode_response({
-  //   packet: packet,
-  //   code: code,
-  //   secret: secret
-  // });
+  var response = radius.encode_response({
+    packet: packet,
+    code: code,
+    secret: secret
+  });
 
-  // console.log('Sending ' + code + ' for user ' + username);
-  // server.send(response, 0, response.length, rinfo.port, rinfo.address, function(err, bytes) {
-  //   if (err) {
-  //     console.log('Error sending response to ', rinfo);
-  //   }
-  // });
+  console.log('Sending ' + code + ' for user ' + username);
+  server.send(response, 0, response.length, rinfo.port, rinfo.address, function(err, bytes) {
+    if (err) {
+      console.log('Error sending response to ', rinfo);
+    }
+  });
 });
 
 server.on("listening", function () {

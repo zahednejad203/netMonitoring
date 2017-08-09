@@ -17,7 +17,7 @@ server.on("message", function (msg, rinfo) {
   var newUser = global.allUsers[username];
   var allUsage = 0;
   if (att['Acct-Status-Type'] == "Interim-Update" || att['Acct-Status-Type'] =="Stop") {
-    allUsage = att['Acct-Input-Octets'] + att['Acct-Output-Octets'];
+    allUsage = parseInt(att['Acct-Input-Octets'], 10) + parseInt(att['Acct-Output-Octets'], 10) ;
   }
   att["userUsage"] = allUsage;
   if (newUser == null ) {

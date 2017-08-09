@@ -1,11 +1,10 @@
 var influx = require("./Utils/influx.js");
-var userModel = require("./models/user.js");
-// var timersInterval = require("timers");
 var radius = require("./radius")
 
 global.influxDb = new influx();
 global.allUsers = {};
 
+// var timersInterval = require("timers");
 // var user = {
 //   "username" : "niloo",
 //   "userUsage" : 1000 ,

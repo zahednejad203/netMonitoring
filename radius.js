@@ -1,6 +1,6 @@
+var userModel = require("./models/user.js");
 var radius = require('radius');
 var dgram = require("dgram");
-
 var secret = 'kazemi@456';
 var server = dgram.createSocket("udp4");
 

@@ -12,12 +12,20 @@ server.on("message", function (msg, rinfo) {
   //   console.log('unknown packet type: ', packet.code);
   //   return;
   // }
+  var att = packet.attributes;
+  username = att['User-Name'];
+  if (att['Acct-Status-Type'] == "Interim-Update" || att['Acct-Status-Type'] =="Stop") {
+    var allUsage = att['Acct-Input-Octets'] + att['Acct-Output-Octets'];
+    console.log('Access-Request for ' + username + "   and data usage is : " + allUsage);
+    
+  }
 
-  username = packet.attributes['User-Name'];
-  password = packet.attributes['User-Password'];
-
-  console.log('Access-Request for ' + username);
-
+  // if (global.allUsers[username]) {
+  //   if (att['Acct-Status-Type'] == "Interim-Update" || att['Acct-Status-Type'] =="Stop") {
+  //     var allUsage = att['Acct-Input-Octets'] + att['Acct-Output-Octets'];
+  //     global.allUsers[username].writeUserData(allUsage);
+  //   }
+  // }
   // if (username == 'jlpicard' && password == 'beverly123') {
     code = 'Access-Accept';
   // } else {

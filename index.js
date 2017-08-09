@@ -3,6 +3,7 @@ var userModel = require("./models/user.js");
 var timersInterval = require("timers");
 
 global.influxDb = new influx();
+global.allUsers = {};
 
 var user = {
   "username" : "niloo",

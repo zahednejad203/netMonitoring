@@ -11,9 +11,9 @@ function user(userData) {
 // class methods
 var method = user.prototype;
 
-method.writeUserData = function (usage) {
-	this.usage = usage - this.lastusage;
-	this.lastusage = this.usage;
+method.writeUserData = function (allUsage) {
+	this.usage = allUsage - this.lastusage;
+	this.lastusage = allUsage;
 	global.influxDb.write(this);
 }
 

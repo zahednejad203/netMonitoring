@@ -3,7 +3,7 @@ var usage = 0 ;
 var lastusage = 0 ; 
 
 function user(userData) {
-	this.username = userData.username;
+	this.username = userData["User-Name"];
 	this.lastusage = userData.userUsage;
 	this.usage = 0;
 }

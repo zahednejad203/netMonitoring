@@ -14,18 +14,19 @@ server.on("message", function (msg, rinfo) {
   // }
   var att = packet.attributes;
   username = att['User-Name'];
+  var newUser = global.allUsers[username];
+  var allUsage = 0;
   if (att['Acct-Status-Type'] == "Interim-Update" || att['Acct-Status-Type'] =="Stop") {
-    var allUsage = att['Acct-Input-Octets'] + att['Acct-Output-Octets'];
-    console.log('Access-Request for ' + username + "   and data usage is : " + allUsage);
-    
+    allUsage = att['Acct-Input-Octets'] + att['Acct-Output-Octets'];
+  }
+  att["userUsage"] = allUsage;
+  if (newUser == null ) {
+    newUser = new userModel(att);   
+    global.allUsers[newUser.username] = newUser;
   }
 
-  // if (global.allUsers[username]) {
-  //   if (att['Acct-Status-Type'] == "Interim-Update" || att['Acct-Status-Type'] =="Stop") {
-  //     var allUsage = att['Acct-Input-Octets'] + att['Acct-Output-Octets'];
-  //     global.allUsers[username].writeUserData(allUsage);
-  //   }
-  // }
+  console.log('Access-Request for ' + username + "   and data usage is : " + allUsage);
+  global.allUsers[username].writeUserData(allUsage);
   // if (username == 'jlpicard' && password == 'beverly123') {
     code = 'Access-Accept';
   // } else {

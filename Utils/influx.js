@@ -17,6 +17,7 @@ function influx() {
 };
 
 method.write = function (user) {
+	console.log(typeof parseInt(user.usage));
 	client.write('user')
 	  	.tag({
 	    	username: user.username, 

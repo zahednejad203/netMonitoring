@@ -37,7 +37,7 @@ method.setProperty = function () {
 		this.notInitialaze = false
 		global.req.get(this.host + this.username + "?token=" + this.token , 
 			(body) => {
-				console.log((body));
+				// console.log((body));
 				var responseData = JSON.parse(body);
 				if (responseData.identity != null && responseData.identity != "undefined") {
 					this.national_number = responseData.identity.national_number;

@@ -18,7 +18,7 @@ var method = influx.prototype;
 function influx() {
 	client.schema('network', fieldSchema, tagSchema, {
 		// default is false
-		stripUnknown: true,
+		stripUnknown: false,
 	});
 };
 

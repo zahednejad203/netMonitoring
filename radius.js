@@ -26,7 +26,7 @@ server.on("message", function (msg, rinfo) {
   }
 
   console.log('Access-Request for ' + username + "   and data usage is : " + allUsage);
-  if (global.allUsers[username] == null || global.allUsers[username] == "undefined" ) {
+  if (global.allUsers[username] != null && global.allUsers[username] != "undefined" ) {
     global.allUsers[username].writeUserData(allUsage);
   }
   // if (username == 'jlpicard' && password == 'beverly123') {

@@ -63,6 +63,7 @@ method.setProperty = function () {
 }
 
 method.writeUserData = function (allUsage) {
+	console.log(allUsage);
 	this.usage = allUsage - this.lastusage;
 	this.lastusage = allUsage;
 	global.influxDb.write(this);

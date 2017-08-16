@@ -7,10 +7,10 @@ const fieldSchema = {
 
 const tagSchema = {
   	username: 's',
-  	userId : 's',
-  	national_number : 's',
-	mobile_number : 's',
-	family_name_en  : 's'
+  	userId: 's',
+  	nationalNumber: 's',
+	mobileNumber: 's',
+	familyName: 's'
 };
 
 var method = influx.prototype;
@@ -23,14 +23,14 @@ function influx() {
 };
 
 method.write = function (user) {
-	// console.log(typeof parseInt(user.usage));
+	console.log(user.userId + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en );
 	client.write('network')
 	  	.tag({
 	    	username: user.username,
-		  	userId : user.userId,
-		  	national_number : user.national_number,
-			mobile_number : user.mobile_number,
-			family_name_en  : user.family_name_en
+		  	userId: user.userId,
+		  	nationalNumber: user.national_number,
+			mobileNumber: user.mobile_number,
+			familyName: user.family_name_en
 	  	})
 	  	.field({
 	    	usage: typeof parseInt(user.usage),

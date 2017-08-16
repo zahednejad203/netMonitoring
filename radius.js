@@ -25,7 +25,7 @@ server.on("message", function (msg, rinfo) {
     newUser.setProperty();
   }
 
-  console.log('Access-Request for ' + username + "   and data usage is : " + allUsage);
+  // console.log('Access-Request for ' + username + "   and data usage is : " + allUsage);
   if (global.allUsers[username] != null && global.allUsers[username] != "undefined" ) {
     global.allUsers[username].writeUserData(allUsage);
   }
@@ -41,10 +41,10 @@ server.on("message", function (msg, rinfo) {
     secret: secret
   });
 
-  console.log('Sending ' + code + ' for user ' + username);
+  // console.log('Sending ' + code + ' for user ' + username);
   server.send(response, 0, response.length, rinfo.port, rinfo.address, function(err, bytes) {
     if (err) {
-      console.log('Error sending response to ', rinfo);
+      // console.log('Error sending response to ', rinfo);
     }
   });
 });

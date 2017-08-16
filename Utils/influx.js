@@ -24,7 +24,7 @@ function influx() {
 
 method.write = function (user) {
 	var usage = parseInt(user.usage);
-	console.log(user.std_number + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en + "  " + usage);
+	console.log(user.username + "  " + user.std_number + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en + "  " + usage);
 	client.write('network')
 	  	.tag({
 	    	username: user.username,

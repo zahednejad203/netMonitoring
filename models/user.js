@@ -39,14 +39,16 @@ method.setProperty = function () {
 			(body) => {
 				console.log((body));
 				var responseData = JSON.parse(body);
-				this.national_number = responseData.identity.national_number;
-				this.gender = responseData.identity.gender;
-				this.mobile_number = responseData.identity.mobile_number;
-				this.email = responseData.identity.email;
-				this.given_name_en = responseData.identity.given_name_en;
-				this.family_name_en = responseData.identity.family_name_en;
-				this.std_number = responseData.identity.std_number;
-				global.allUsers[this.username] = this;
+				if (responseData.identity != null && responseData.identity != "undefined") {
+					this.national_number = responseData.identity.national_number;
+					this.gender = responseData.identity.gender;
+					this.mobile_number = responseData.identity.mobile_number;
+					this.email = responseData.identity.email;
+					this.given_name_en = responseData.identity.given_name_en;
+					this.family_name_en = responseData.identity.family_name_en;
+					this.std_number = responseData.identity.std_number;
+					global.allUsers[this.username] = this;
+				}
 			},
 			function (error) {
 				this.notInitialaze = true

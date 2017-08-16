@@ -10,7 +10,8 @@ const tagSchema = {
   	userId: 's',
   	nationalNumber: 's',
 	mobileNumber: 's',
-	familyName: 's'
+	familyName: 's',
+	group: "s"
 };
 
 var method = influx.prototype;
@@ -24,14 +25,15 @@ function influx() {
 
 method.write = function (user) {
 	var usage = parseInt(user.usage);
-	console.log(user.username + "  " + user.std_number + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en + "  " + usage);
+	console.log(user.username + "  " + user.group + "  " + user.std_number + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en + "  " + usage);
 	client.write('network')
 	  	.tag({
 	    	username: user.username,
 		  	userId: user.std_number,
 		  	nationalNumber: user.national_number,
 			mobileNumber: user.mobile_number,
-			familyName: user.family_name_en
+			familyName: user.family_name_en,
+			group: user.group
 	  	})
 	  	.field({
 	    	usage: usage,

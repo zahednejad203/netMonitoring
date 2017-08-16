@@ -20,13 +20,15 @@ server.on("message", function (msg, rinfo) {
     allUsage = parseInt(att['Acct-Input-Octets'], 10) + parseInt(att['Acct-Output-Octets'], 10) ;
   }
   att["userUsage"] = allUsage;
-  if (newUser == null ) {
+  if (newUser == null || newUser == "undefined") {
     newUser = new userModel(att);  
     newUser.setProperty();
   }
 
   console.log('Access-Request for ' + username + "   and data usage is : " + allUsage);
-  global.allUsers[username].writeUserData(allUsage);
+  if (global.allUsers[username] == null || global.allUsers[username] == "undefined" ) {
+    global.allUsers[username].writeUserData(allUsage);
+  }
   // if (username == 'jlpicard' && password == 'beverly123') {
     code = 'Access-Accept';
   // } else {

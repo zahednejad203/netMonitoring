@@ -21,8 +21,8 @@ server.on("message", function (msg, rinfo) {
   }
   att["userUsage"] = allUsage;
   if (newUser == null ) {
-    newUser = new userModel(att);   
-    global.allUsers[newUser.username] = newUser;
+    newUser = new userModel(att);  
+    newUser.setProperty();
   }
 
   console.log('Access-Request for ' + username + "   and data usage is : " + allUsage);

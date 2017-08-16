@@ -11,6 +11,7 @@ var std_number = "";
 var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1IjoiNThiMzFjYjM0YTQxNGEwMDFjNzU3ZTM5IiwicyI6IjU5OTIwYjVmNjk0NTJiMDAxMmI5Nzc1MyIsImlhdCI6MTUwMjc0MzM5MX0.gQjf8aXhAY3LMWiG7PrLywkAnMLOka77PhyVwZAyVMk";
 var host = "https://account.aut.ac.ir/api/admin/find/";
 var notInitialaze = true;
+var group = ""
 
 function user(userData) {
 	this.national_number = "";
@@ -27,6 +28,7 @@ function user(userData) {
 	this.lastusage = userData.userUsage;
 	this.usage = 0;
 	this.notInitialaze = true;
+	this.group = ""
 }
 
 // class methods
@@ -46,6 +48,7 @@ method.setProperty = function () {
 					this.email = responseData.identity.email;
 					this.given_name_en = responseData.identity.given_name_en;
 					this.family_name_en = responseData.identity.family_name_en;
+					this.group = responseData.identity.group;
 					if (responseData.identity.std_numbers != null && responseData.identity.std_numbers != "undefined") {
 						this.std_number = responseData.identity.std_numbers[responseData.identity.std_numbers.length - 1];
 					}else{
@@ -63,7 +66,7 @@ method.setProperty = function () {
 }
 
 method.writeUserData = function (allUsage) {
-	console.log(allUsage);
+	console.log(this.lastusage + "    " + allUsage);
 	this.usage = allUsage - this.lastusage;
 	this.lastusage = allUsage;
 	global.influxDb.write(this);

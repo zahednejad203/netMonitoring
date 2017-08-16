@@ -18,12 +18,13 @@ var method = influx.prototype;
 function influx() {
 	client.schema('network', fieldSchema, tagSchema, {
 		// default is false
-		stripUnknown: false,
+		stripUnknown: true,
 	});
 };
 
 method.write = function (user) {
 	console.log(user.std_number + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en );
+	var usage = parseInt(user.usage);
 	client.write('network')
 	  	.tag({
 	    	username: user.username,
@@ -33,7 +34,7 @@ method.write = function (user) {
 			familyName: user.family_name_en
 	  	})
 	  	.field({
-	    	usage: typeof parseInt(user.usage),
+	    	usage: usage,
 	  	})
 	  	.then()
 	  	.catch(console.error);

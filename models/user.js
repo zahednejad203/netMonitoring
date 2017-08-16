@@ -47,7 +47,7 @@ method.setProperty = function () {
 					this.given_name_en = responseData.identity.given_name_en;
 					this.family_name_en = responseData.identity.family_name_en;
 					if (responseData.identity.std_numbers != null && responseData.identity.std_numbers != "undefined") {
-						this.std_number = responseData.identity.std_numbers[responseData.identity.std_numbers.length];
+						this.std_number = responseData.identity.std_numbers[responseData.identity.std_numbers.length - 1];
 					}else{
 						this.std_number = 0//responseData.identity.std_numbers[];
 					}

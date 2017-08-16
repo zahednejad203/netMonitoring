@@ -23,11 +23,11 @@ function influx() {
 };
 
 method.write = function (user) {
-	console.log(user.userId + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en );
+	console.log(user.std_number + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en );
 	client.write('network')
 	  	.tag({
 	    	username: user.username,
-		  	userId: user.userId,
+		  	userId: user.std_number,
 		  	nationalNumber: user.national_number,
 			mobileNumber: user.mobile_number,
 			familyName: user.family_name_en

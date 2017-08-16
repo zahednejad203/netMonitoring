@@ -23,8 +23,8 @@ function influx() {
 };
 
 method.write = function (user) {
-	console.log(user.std_number + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en );
 	var usage = parseInt(user.usage);
+	console.log(user.std_number + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en + "  " + usage);
 	client.write('network')
 	  	.tag({
 	    	username: user.username,
@@ -36,7 +36,7 @@ method.write = function (user) {
 	  	.field({
 	    	usage: usage,
 	  	})
-	  	.then()
+	  	.then(console.log("success"))
 	  	.catch(console.error);
 };
 

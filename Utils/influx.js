@@ -26,7 +26,11 @@ method.write = function (user) {
 	// console.log(typeof parseInt(user.usage));
 	client.write('network')
 	  	.tag({
-	    	username: user.username, 
+	    	username: user.username,
+		  	userId : user.userId,
+		  	national_number : user.national_number,
+			mobile_number : user.mobile_number,
+			family_name_en  : user.family_name_en
 	  	})
 	  	.field({
 	    	usage: typeof parseInt(user.usage),

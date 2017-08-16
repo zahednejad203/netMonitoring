@@ -16,7 +16,7 @@ const tagSchema = {
 var method = influx.prototype;
 
 function influx() {
-	client.schema('user', fieldSchema, tagSchema, {
+	client.schema('network', fieldSchema, tagSchema, {
 		// default is false
 		stripUnknown: false,
 	});
@@ -24,7 +24,7 @@ function influx() {
 
 method.write = function (user) {
 	// console.log(typeof parseInt(user.usage));
-	client.write('user')
+	client.write('network')
 	  	.tag({
 	    	username: user.username, 
 	  	})

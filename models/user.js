@@ -46,7 +46,11 @@ method.setProperty = function () {
 					this.email = responseData.identity.email;
 					this.given_name_en = responseData.identity.given_name_en;
 					this.family_name_en = responseData.identity.family_name_en;
-					this.std_number = responseData.identity.std_number;
+					if (responseData.identity.std_numbers != null && responseData.identity.std_numbers != "undefined") {
+						this.std_number = responseData.identity.std_numbers[responseData.identity.std_numbers.length];
+					}else{
+						this.std_number = 0//responseData.identity.std_numbers[];
+					}
 					global.allUsers[this.username] = this;
 				}
 			},

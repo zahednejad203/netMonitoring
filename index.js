@@ -1,6 +1,8 @@
 var influx = require("./Utils/influx.js");
 var radius = require("./radius")
+var reqClass = require("./Utils/req.js");
 
+global.req = new reqClass();
 global.influxDb = new influx();
 global.allUsers = {};
 

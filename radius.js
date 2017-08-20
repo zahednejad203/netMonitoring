@@ -21,13 +21,12 @@ server.on("message", function (msg, rinfo) {
   }
   att["userUsage"] = allUsage;
   if (newUser == null || newUser == "undefined") {
+    console.log("new user " + username);
     newUser = new userModel(att);  
     newUser.setProperty();
-  }
-
-  // console.log('Access-Request for ' + username + "   and data usage is : " + allUsage);
-  if (global.allUsers[username] != null && global.allUsers[username] != "undefined" ) {
-    global.allUsers[username].writeUserData(allUsage);
+  }else{
+    console.log("already exist" + username);
+    newUser.writeUserData(allUsage);
   }
   // if (username == 'jlpicard' && password == 'beverly123') {
     code = 'Access-Accept';

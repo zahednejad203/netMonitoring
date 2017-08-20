@@ -69,10 +69,9 @@ method.writeUserData = function (allUsage) {
 	console.log(this.lastusage + "    " + allUsage);
 	var usage = allUsage - this.lastusage;
 	if (usage >= 0) {
-		this.usage = allUsage - this.lastusage;	
+		this.usage = allUsage - this.lastusage;
+		this.usage = Math.floor(this.usage * 0.000001)
 		this.lastusage = allUsage;	
-	}else{
-		this.usage = 1
 	}
 	
 	global.influxDb.write(this);

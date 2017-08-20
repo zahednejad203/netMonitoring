@@ -11,13 +11,13 @@ const tagSchema = {
   	nationalNumber: 's',
 	mobileNumber: 's',
 	familyName: 's',
-	group: "s"
+	group: 's'
 };
 
 var method = influx.prototype;
 
 function influx() {
-	client.schema('network', fieldSchema, tagSchema, {
+	client.schema('monitoring', fieldSchema, tagSchema, {
 		// default is false
 		stripUnknown: false,
 	});
@@ -25,8 +25,8 @@ function influx() {
 
 method.write = function (user) {
 	var usage = parseInt(user.usage);
-	// console.log(user.username + "  " + user.group + "  " + user.std_number + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en + "  " + usage);
-	client.write('network')
+	console.log(user.username + "  " + user.group + "  " + user.std_number + "  " + user.national_number + "  " + user.mobile_number + "  " + user.family_name_en + "  " + usage);
+	client.write('monitoring')
 	  	.tag({
 	    	username: user.username,
 		  	userId: user.std_number,

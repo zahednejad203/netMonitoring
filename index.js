@@ -5,7 +5,8 @@ var reqClass = require("./Utils/req.js");
 global.req = new reqClass();
 global.influxDb = new influx();
 global.allUsers = {};
-global.counter = 0;
+global.errorCounter = 0;
+global.totalCounter = 0;
 // var timersInterval = require("timers");
 // var user = {
 //   "username" : "niloo",

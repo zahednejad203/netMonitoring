@@ -88,8 +88,8 @@ method.writeUserData = function (allUsage) {
 		this.usage = Math.floor(this.usage * 0.000001)
 		this.lastusage = allUsage;
 	}else{
-		global.counter = global.counter + 1 ;	
-		console.log(global.counter + " error data in : " + global.totalCounter);
+		global.errorCounter = global.errorCounter + 1 ;	
+		console.log(global.errorCounter + " error data in : " + global.totalCounter);
 	}
 	global.influxDb.write(this);
 }

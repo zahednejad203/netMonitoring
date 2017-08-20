@@ -45,7 +45,7 @@
         $(function() {
 
             var influxdb = 'http://192.168.143.131:8086/query';
-            var testQuery = ' SELECT mean("usage") FROM "user" WHERE "username" = '+"'niloo'"+" AND time > '2017-07-27T07:00:00Z' AND time < '2017-07-27T07:03:40Z' GROUP BY time(10s) fill(0)";
+            var testQuery = 'SELECT mean("usage") FROM "network" WHERE "userId" = '+"'9131071'"+" AND time > '2017-08-10T07:00:00Z' AND time < '2017-08-20T12:03:40Z' GROUP BY time(1h) fill(0)";
 
             $.getJSON( influxdb, {
                         db: 'NetUsage',

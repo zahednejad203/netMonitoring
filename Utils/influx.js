@@ -19,7 +19,7 @@ var method = influx.prototype;
 function influx() {
 	client.schema('monitoring', fieldSchema, tagSchema, {
 		// default is false
-		stripUnknown: false,
+		stripUnknown: true,
 	});
 };
 

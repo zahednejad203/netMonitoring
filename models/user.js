@@ -28,7 +28,7 @@ function user(userData) {
 	this.lastusage = userData.userUsage;
 	this.usage = 0;
 	this.notInitialaze = true;
-	this.group = "BS"
+	this.group = "BS";
 }
 
 // class methods
@@ -42,29 +42,31 @@ method.setProperty = function () {
 				// console.log((body));
 				var responseData = JSON.parse(body);
 				if (responseData.identity != null && responseData.identity != "undefined") {
-					if (responseData.identity.national_number != null || responseData.identity.national_number != "undefined") {
+					if (responseData.identity.national_number != null && responseData.identity.national_number != "undefined") {
 						this.national_number = responseData.identity.national_number;
 					}
-					if (responseData.identity.gender != null || responseData.identity.gender != "undefined") {
+					if (responseData.identity.gender != null && responseData.identity.gender != "undefined") {
 						this.gender = responseData.identity.gender;
 					}
-					if (responseData.identity.mobile_number != null || responseData.identity.mobile_number != "undefined") {
+					if (responseData.identity.mobile_number != null && responseData.identity.mobile_number != "undefined") {
 						this.mobile_number = responseData.identity.mobile_number;
 					}
-					if (responseData.identity.email != null || responseData.identity.email != "undefined") {
+					if (responseData.identity.email != null && responseData.identity.email != "undefined") {
 						this.email = responseData.identity.email;
 					}
-					if (responseData.identity.given_name_en != null || responseData.identity.given_name_en != "undefined") {
+					if (responseData.identity.given_name_en != null && responseData.identity.given_name_en != "undefined") {
 						this.given_name_en = responseData.identity.given_name_en;
 					}
-					if (responseData.identity.family_name_en != null || responseData.identity.family_name_en != "undefined") {
+					if (responseData.identity.family_name_en != null && responseData.identity.family_name_en != "undefined") {
 						this.family_name_en = responseData.identity.family_name_en;
 					}
-					if (responseData.identity.group != null || responseData.identity.group != "undefined") {
+					if (responseData.identity.group != null && responseData.identity.group != "undefined") {
 						this.group = responseData.identity.group;
 					}
 					if (responseData.identity.std_numbers != null && responseData.identity.std_numbers != "undefined") {
-						this.std_number = responseData.identity.std_numbers[responseData.identity.std_numbers.length - 1];
+						if (responseData.identity.std_numbers[responseData.identity.std_numbers.length - 1] != null && responseData.identity.std_numbers[responseData.identity.std_numbers.length - 1] != "UNKNOWN" && responseData.identity.std_numbers[responseData.identity.std_numbers.length - 1] != "undefined") {
+							this.std_number = responseData.identity.std_numbers[responseData.identity.std_numbers.length - 1];						
+						}
 					}
 					global.allUsers[this.username] = this;
 				}

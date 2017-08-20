@@ -14,13 +14,13 @@ var notInitialaze = true;
 var group = ""
 
 function user(userData) {
-	this.national_number = "";
-	this.gender = "";
-	this.mobile_number = "";
-	this.email = "";
-	this.given_name_en = "";
-	this.family_name_en = "";
-	this.std_number = "";
+	this.national_number = "1111111111";
+	this.gender = "female";
+	this.mobile_number = "0912111111";
+	this.email = "undefined@aut.ac.ir";
+	this.given_name_en = "sample";
+	this.family_name_en = "sample";
+	this.std_number = "1111111";
 	this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1IjoiNThiMzFjYjM0YTQxNGEwMDFjNzU3ZTM5IiwicyI6IjU5OTIwYjVmNjk0NTJiMDAxMmI5Nzc1MyIsImlhdCI6MTUwMjc0MzM5MX0.gQjf8aXhAY3LMWiG7PrLywkAnMLOka77PhyVwZAyVMk";
 	this.host = "https://account.aut.ac.ir/api/admin/find/";
 	this.notInitialaze = true;
@@ -28,7 +28,7 @@ function user(userData) {
 	this.lastusage = userData.userUsage;
 	this.usage = 0;
 	this.notInitialaze = true;
-	this.group = ""
+	this.group = "BS"
 }
 
 // class methods
@@ -42,17 +42,29 @@ method.setProperty = function () {
 				// console.log((body));
 				var responseData = JSON.parse(body);
 				if (responseData.identity != null && responseData.identity != "undefined") {
-					this.national_number = responseData.identity.national_number;
-					this.gender = responseData.identity.gender;
-					this.mobile_number = responseData.identity.mobile_number;
-					this.email = responseData.identity.email;
-					this.given_name_en = responseData.identity.given_name_en;
-					this.family_name_en = responseData.identity.family_name_en;
-					this.group = responseData.identity.group;
+					if (responseData.identity.national_number != null || responseData.identity.national_number != "undefined") {
+						this.national_number = responseData.identity.national_number;
+					}
+					if (responseData.identity.gender != null || responseData.identity.gender != "undefined") {
+						this.gender = responseData.identity.gender;
+					}
+					if (responseData.identity.mobile_number != null || responseData.identity.mobile_number != "undefined") {
+						this.mobile_number = responseData.identity.mobile_number;
+					}
+					if (responseData.identity.email != null || responseData.identity.email != "undefined") {
+						this.email = responseData.identity.email;
+					}
+					if (responseData.identity.given_name_en != null || responseData.identity.given_name_en != "undefined") {
+						this.given_name_en = responseData.identity.given_name_en;
+					}
+					if (responseData.identity.family_name_en != null || responseData.identity.family_name_en != "undefined") {
+						this.family_name_en = responseData.identity.family_name_en;
+					}
+					if (responseData.identity.group != null || responseData.identity.group != "undefined") {
+						this.group = responseData.identity.group;
+					}
 					if (responseData.identity.std_numbers != null && responseData.identity.std_numbers != "undefined") {
 						this.std_number = responseData.identity.std_numbers[responseData.identity.std_numbers.length - 1];
-					}else{
-						this.std_number = 0//responseData.identity.std_numbers[];
 					}
 					global.allUsers[this.username] = this;
 				}

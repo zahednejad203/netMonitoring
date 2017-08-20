@@ -25,7 +25,7 @@ server.on("message", function (msg, rinfo) {
     newUser = new userModel(att);  
     newUser.setProperty();
   }else{
-    console.log("already exist" + username);
+    console.log("already exist : " + username);
     newUser.writeUserData(allUsage);
   }
   // if (username == 'jlpicard' && password == 'beverly123') {
